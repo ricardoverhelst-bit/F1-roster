@@ -96,7 +96,7 @@ Alle dependencies worden geïnstalleerd via `requirements.txt`.
 
 
 
-Volg deze stappen \*\*exact\*\* (zoals de docent dit zal doen):
+Volg deze stappen \*\*exact\*\*:
 
 
 
@@ -291,66 +291,6 @@ De applicatie gebruikt een \*\*SQLite database\*\* (`data/f1\_roster.db`) met tw
 
 
 De tabel `sqlite\_sequence` wordt automatisch door SQLite aangemaakt.
-
-
-
----
-
-
-
-\## Klassen
-
-
-
-De applicatie gebruikt Python-klassen in `models.py`:
-
-
-
-\* `Team`
-
-\* `Driver`
-
-
-
-Deze klassen vertegenwoordigen de entiteiten uit de database.
-
-
-
----
-
-
-
-\## Configuratie \& veiligheid
-
-
-
-\* De database staat \*\*niet hardcoded\*\* in de code
-
-\* Gevoelige bestanden zoals:
-
-
-
-&nbsp; \* `venv/`
-
-&nbsp; \* `settings.ini`
-
-&nbsp; \* `\_\_pycache\_\_/`
-
-
-
-worden uitgesloten via `.gitignore`
-
-
-
-Een voorbeeldconfiguratie is beschikbaar in:
-
-
-
-```
-
-config/settings.example.ini
-
-```
 
 
 
