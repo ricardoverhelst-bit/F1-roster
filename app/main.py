@@ -67,6 +67,22 @@ def export_teams_csv():
 
     print("teams.csv aangemaakt\n")
 
+def export_drivers_csv():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM drivers")
+    drivers = cursor.fetchall()
+
+    conn.close()
+
+    with open("drivers.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["id", "name", "number", "team_id"])
+        writer.writerows(drivers)
+
+    print("drivers.csv aangemaakt\n")
+
 
 # =========================
 # MENU
@@ -76,6 +92,7 @@ def menu():
     print("1. Team toevoegen")
     print("2. Driver toevoegen")
     print("3. Exporteer teams naar CSV")
+    print("4. Exporteer drivers naar CSV")
     print("0. Afsluiten")
 
     return input("Maak een keuze: ")
@@ -96,6 +113,8 @@ def main():
             add_driver()
         elif choice == "3":
             export_teams_csv()
+        elif choice == "4":
+            export_drivers_csv()
         elif choice == "0":
             print("Programma afgesloten")
             break
