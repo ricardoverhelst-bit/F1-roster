@@ -1,5 +1,9 @@
 from app.database import create_tables, get_connection
+import csv
 
+# =========================
+# TEAM TOEVOEGEN
+# =========================
 def add_team():
     print("\n--- TEAM TOEVOEGEN ---")
 
@@ -19,6 +23,10 @@ def add_team():
 
     print("Team toegevoegd\n")
 
+
+# =========================
+# DRIVER TOEVOEGEN
+# =========================
 def add_driver():
     print("\n--- DRIVER TOEVOEGEN ---")
 
@@ -39,14 +47,43 @@ def add_driver():
 
     print("Driver toegevoegd\n")
 
+
+# =========================
+# CSV EXPORT
+# =========================
+def export_teams_csv():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM teams")
+    teams = cursor.fetchall()
+
+    conn.close()
+
+    with open("teams.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["id", "name", "country"])
+        writer.writerows(teams)
+
+    print("teams.csv aangemaakt\n")
+
+
+# =========================
+# MENU
+# =========================
 def menu():
     print("F1 TEAM ROSTER")
     print("1. Team toevoegen")
     print("2. Driver toevoegen")
+    print("3. Exporteer teams naar CSV")
     print("0. Afsluiten")
 
     return input("Maak een keuze: ")
 
+
+# =========================
+# MAIN
+# =========================
 def main():
     create_tables()
 
@@ -57,6 +94,8 @@ def main():
             add_team()
         elif choice == "2":
             add_driver()
+        elif choice == "3":
+            export_teams_csv()
         elif choice == "0":
             print("Programma afgesloten")
             break
