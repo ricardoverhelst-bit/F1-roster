@@ -39,9 +39,29 @@ def add_driver():
 
     print("Driver toegevoegd\n")
 
+def menu():
+    print("F1 TEAM ROSTER")
+    print("1. Team toevoegen")
+    print("2. Driver toevoegen")
+    print("0. Afsluiten")
+
+    return input("Maak een keuze: ")
+
 def main():
     create_tables()
-    add_driver()
+
+    while True:
+        choice = menu()
+
+        if choice == "1":
+            add_team()
+        elif choice == "2":
+            add_driver()
+        elif choice == "0":
+            print("Programma afgesloten")
+            break
+        else:
+            print("Ongeldige keuze\n")
 
 
 if __name__ == "__main__":
